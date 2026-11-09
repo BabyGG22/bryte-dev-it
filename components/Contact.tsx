@@ -30,7 +30,7 @@ function LagosClock() {
   if (!time) return null;
   return (
     <span className="clock">
-      <span className="pulse" /> It&apos;s {time} in Lagos, replies usually land the same day.
+      <span className="pulse" /> {time} in Lagos (WAT). I usually reply within a day.
     </span>
   );
 }
@@ -52,7 +52,7 @@ export default function Contact() {
     <section id="contact" className="section contact">
       <header className="section__head">
         <span className="section__index">05</span>
-        <h2>Contacts</h2>
+        <h2>Contact</h2>
       </header>
 
       <motion.h3
@@ -62,7 +62,7 @@ export default function Contact() {
         viewport={{ once: true }}
         transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
       >
-        Got an idea? <span className="glow">Let&apos;s make it live.</span>
+        Have a product in mind? <span className="glow">Let&apos;s work together.</span>
       </motion.h3>
 
       <div className="contact__email">
@@ -99,14 +99,14 @@ export default function Contact() {
       <LagosClock />
 
       <footer className="footer">
-        <span>© {new Date().getFullYear()} Bryte-Dev-It</span>
-        <span>Researched by a trader. Built with AI. Shipped by Bright.</span>
+        <span>© {new Date().getFullYear()} Bright Wallan · Bryte-Dev-It</span>
+        <span>Available for freelance and full-time roles.</span>
       </footer>
 
       <AnimatePresence>
         {copied && (
           <motion.div className="toast" initial={{ y: 40, opacity: 0 }} animate={{ y: 0, opacity: 1 }} exit={{ y: 40, opacity: 0 }}>
-            Email copied. Talk soon.
+            Email copied
           </motion.div>
         )}
       </AnimatePresence>

@@ -4,10 +4,11 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
 const links = [
-  { href: "#intro", label: "Intro" },
+  { href: "#intro", label: "About" },
   { href: "#skills", label: "Skills" },
   { href: "#products", label: "Products" },
   { href: "#experiments", label: "Experiments" },
+  { href: "#contact", label: "Contact" },
 ];
 
 export default function Nav() {
@@ -21,7 +22,7 @@ export default function Nav() {
 
   // Highlight the section currently on screen
   useEffect(() => {
-    const ids = [...links.map((l) => l.href.slice(1)), "contact"];
+    const ids = links.map((l) => l.href.slice(1));
     const io = new IntersectionObserver(
       (entries) => {
         entries.forEach((e) => e.isIntersecting && setActive("#" + e.target.id));
@@ -80,7 +81,7 @@ export default function Nav() {
           </motion.span>
         </button>
         <a href="#contact" className="btn btn--primary btn--sm">
-          Let&apos;s talk
+          Hire me
         </a>
       </div>
     </motion.header>

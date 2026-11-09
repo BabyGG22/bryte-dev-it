@@ -36,6 +36,13 @@ function ScreenBg({ project }: { project: Project }) {
   const [a, b] = project.tint;
   return (
     <div className="screen__bg" style={{ background: `radial-gradient(120% 120% at 85% 0%, ${b} 0%, ${a} 65%)` }}>
+      <div className="ghostui" style={{ ["--c" as string]: b }} aria-hidden>
+        <span className="ghostui__nav" />
+        <span className="ghostui__hero" />
+        <span className="ghostui__a" />
+        <span className="ghostui__b" />
+        <span className="ghostui__c" />
+      </div>
       {src && ok && (
         // eslint-disable-next-line @next/next/no-img-element
         <img src={src} alt="" loading="lazy" onError={() => setOk(false)} />
@@ -103,10 +110,9 @@ export default function Monitor({ id, index, title, intro, projects }: Props) {
             {/* menu bar */}
             <div className="menubar">
               <span className="menubar__logo">◆</span>
-              <strong>Bryte OS</strong>
+              <strong>Bright Wallan</strong>
+              <span className="menubar__item menubar__hide">Portfolio</span>
               <span className="menubar__item">{p.name}</span>
-              <span className="menubar__item menubar__hide">View</span>
-              <span className="menubar__item menubar__hide">Go</span>
               <span className="menubar__spacer" />
               <span className="menubar__item">{i + 1}/{n}</span>
               <Clock />
@@ -149,23 +155,24 @@ export default function Monitor({ id, index, title, intro, projects }: Props) {
                     <div className="window__body">
                       <div className="window__meta">
                         <span className={`status status--${p.status.replace(" ", "").toLowerCase()}`}>{p.status}</span>
-                        <span className="window__net">{p.network}</span>
+                        {p.network && <span className="window__net">{p.network}</span>}
                       </div>
                       <h3 className="window__name">{p.name}</h3>
-                      <p className="window__tagline">{p.tagline}</p>
-                      <p className="window__desc">{p.description}</p>
-                      <p className="window__role">
-                        <span>My role</span> {p.role}
-                      </p>
-                      <div className="window__stack">
-                        {p.stack.map((s) => (
-                          <span key={s}>{s}</span>
-                        ))}
-                      </div>
+                      <p className="window__desc">{p.summary}</p>
+                      <dl className="window__facts">
+                        <div>
+                          <dt>Role</dt>
+                          <dd>{p.role}</dd>
+                        </div>
+                        <div>
+                          <dt>Stack</dt>
+                          <dd>{p.stack.join(" · ")}</dd>
+                        </div>
+                      </dl>
                       <div className="window__links">
                         {p.url ? (
                           <a className="btn btn--primary btn--sm" href={p.url} target="_blank" rel="noreferrer">
-                            Visit {host(p.url)} ↗
+                            Visit site ↗
                           </a>
                         ) : (
                           <span className="btn btn--ghost btn--sm is-disabled">Not public yet</span>
