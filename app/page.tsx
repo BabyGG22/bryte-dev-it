@@ -2,7 +2,7 @@ import Nav from "@/components/Nav";
 import Backdrop from "@/components/Backdrop";
 import Hero from "@/components/Hero";
 import Skills from "@/components/Skills";
-import CardDeck from "@/components/CardDeck";
+import Monitor from "@/components/Monitor";
 import Contact from "@/components/Contact";
 import { products, experiments } from "@/data/site";
 
@@ -14,14 +14,14 @@ export default function Home() {
       <main>
         <Hero />
         <Skills />
-        <CardDeck
+        <Monitor
           id="products"
           index="03"
           title="Products"
-          intro="The two I'm pushing hardest. Tap a card to flip it."
+          intro="The two I'm pushing hardest. Tap the links on screen, hit Next to switch."
           projects={products}
         />
-        <CardDeck
+        <Monitor
           id="experiments"
           index="04"
           title="Experiments"

@@ -3,7 +3,6 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { hero, owner, products, experiments } from "@/data/site";
-import { CardFace } from "./ProjectCard";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
@@ -30,7 +29,49 @@ function RotatingRole() {
   );
 }
 
-const fan = [products[0], products[1], experiments[0]];
+const orbiters = [...products, ...experiments.slice(0, 3)];
+
+function Orbit() {
+  return (
+    <div className="orbit" aria-hidden>
+      <motion.div
+        className="planet"
+        initial={{ scale: 0.6, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        transition={{ delay: 0.4, duration: 1.2, ease }}
+      >
+        <span className="planet__ring" />
+        <span className="planet__core" />
+      </motion.div>
+      {[0, 1].map((ring) => (
+        <motion.div
+          key={ring}
+          className={`orbit__path orbit__path--${ring}`}
+          animate={{ rotate: ring ? -360 : 360 }}
+          transition={{ duration: ring ? 90 : 60, repeat: Infinity, ease: "linear" }}
+        >
+          {orbiters
+            .filter((_, k) => k % 2 === ring)
+            .map((p, k, arr) => {
+              const angle = (360 / arr.length) * k + ring * 40;
+              return (
+                <span key={p.slug} className="orbit__body" style={{ transform: `rotate(${angle}deg) translateX(var(--r)) rotate(${-angle}deg)` }}>
+                  <motion.span
+                    className="orbit__label"
+                    animate={{ rotate: ring ? 360 : -360 }}
+                    transition={{ duration: ring ? 90 : 60, repeat: Infinity, ease: "linear" }}
+                  >
+                    <i style={{ background: p.tint[1] }} />
+                    {p.name}
+                  </motion.span>
+                </span>
+              );
+            })}
+        </motion.div>
+      ))}
+    </div>
+  );
+}
 
 export default function Hero() {
   return (
@@ -102,20 +143,8 @@ export default function Hero() {
         </motion.p>
       </div>
 
-      <div className="hero__fan" aria-hidden>
-        {fan.map((p, i) => (
-          <motion.div
-            key={p.slug}
-            className="hero__fancard"
-            style={{ zIndex: 3 - i }}
-            initial={{ opacity: 0, y: 80, rotate: 0 }}
-            animate={{ opacity: 1, y: i * 26, x: i * 22, rotate: -8 + i * 7 }}
-            whileHover={{ y: i * 26 - 14, rotate: -8 + i * 7 - 2 }}
-            transition={{ delay: 0.5 + i * 0.15, type: "spring", stiffness: 90, damping: 16 }}
-          >
-            <CardFace project={p} />
-          </motion.div>
-        ))}
+      <div className="hero__visual">
+        <Orbit />
       </div>
     </section>
   );
