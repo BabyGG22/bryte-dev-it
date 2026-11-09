@@ -18,8 +18,11 @@ export type Project = {
   stack: string[]; // keep to 3–4
   /** Screen colours (also the fallback if the screenshot can't load) */
   tint: [string, string];
-  /** Optional local screenshot in /public/shots — beats the live screenshot service */
+  /** Real screenshot of the product UI in /public/shots */
   shot?: string;
+  /** Logo in /public/logos, and the tile colour behind it */
+  logo?: string;
+  logoBg?: string;
 };
 
 export const owner = {
@@ -55,6 +58,9 @@ export const skills = [
 export const products: Project[] = [
   {
     slug: "callit",
+    shot: "/shots/callit.jpg",
+    logo: "/logos/callit.png",
+    logoBg: "#0b1220",
     name: "Callit",
     summary: "Social trading app where traders earn when their token calls perform.",
     role: "Founder & Builder",
@@ -67,6 +73,8 @@ export const products: Project[] = [
   },
   {
     slug: "predarena",
+    logo: "/logos/predarena.png",
+    logoBg: "#ffffff",
     name: "PredArena",
     summary: "Competition market for head-to-head crypto battles with on-chain settlement.",
     role: "Co-founder & CPO",
@@ -81,15 +89,22 @@ export const products: Project[] = [
 export const experiments: Project[] = [
   {
     slug: "startit",
+    shot: "/shots/startit.jpg",
+    logo: "/logos/startit.png",
+    logoBg: "#12060a",
     name: "Startit",
-    summary: "Meme-token launchpad connecting real products with crypto communities.",
+    summary: "Founder-approved, AI-screened token launchpad connecting real products with meme communities.",
     role: "Builder",
     status: "Devnet",
-    stack: ["Next.js", "Raydium LaunchLab"],
+    url: "https://startit-fun.vercel.app",
+    repo: "https://github.com/SolCallit/startit.fun",
+    stack: ["Next.js", "Supabase", "Raydium LaunchLab"],
     tint: ["#1a0506", "#b3121b"],
   },
   {
     slug: "mira",
+    shot: "/shots/mira.jpg",
+    logo: "/logos/mira.svg",
     name: "MIRA",
     summary: "Crypto and forex research desk pairing fundamentals with trade setups.",
     role: "Researcher & Builder",
@@ -101,6 +116,9 @@ export const experiments: Project[] = [
   },
   {
     slug: "coops",
+    shot: "/shots/coops.jpg",
+    logo: "/logos/coops.png",
+    logoBg: "#050505",
     name: "c00ps",
     summary: "Group savings plans with invite-only cohorts and contribution tracking.",
     role: "Frontend",
@@ -112,17 +130,22 @@ export const experiments: Project[] = [
   },
   {
     slug: "meridian",
+    shot: "/shots/meridian.jpg",
+    logo: "/logos/meridian.svg",
+    logoBg: "#f6f3ec",
     name: "Meridian",
-    summary: "Digital banking concept for cross-border users: transfers, cards, dashboard.",
+    summary: "Multi-currency banking app for a borderless life: accounts, cards, transfers, insights.",
     role: "Builder",
     status: "In build",
-    stack: ["TanStack Start", "TypeScript"],
+    stack: ["TanStack Start", "TypeScript", "Radix UI"],
     tint: ["#071420", "#1d6fa8"],
   },
   {
-    slug: "zenith",
-    name: "Zenith",
-    summary: "Banking website with animated product pages.",
+    slug: "boj",
+    shot: "/shots/boj.jpg",
+    logo: "/logos/boj.svg",
+    name: "BOJ Banking",
+    summary: "Retail banking site and customer dashboard: accounts, transfers, spending insights.",
     role: "Builder",
     status: "In build",
     repo: "https://github.com/BabyGG22/Banking",
@@ -131,11 +154,13 @@ export const experiments: Project[] = [
   },
   {
     slug: "bp26",
+    shot: "/shots/bp26.jpg",
+    logo: "/logos/bp26.svg",
     name: "BP26",
-    summary: "Best Player 26, a stock-to-earn NFT marketplace.",
+    summary: "Sports debates settled on-chain: a stock-to-earn NFT prediction market.",
     role: "Founder",
     status: "Concept",
-    stack: ["Landing page"],
+    stack: ["HTML", "CSS", "JavaScript"],
     tint: ["#1a1206", "#c26a12"],
   },
 ];

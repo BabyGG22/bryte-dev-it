@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { hero, owner, stats, products, experiments } from "@/data/site";
+import { Logo } from "./Showcase";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 const orbiters = [...products, ...experiments.slice(0, 3)];
@@ -27,7 +28,7 @@ function Orbit() {
               return (
                 <span key={p.slug} className="orbit__body" style={{ transform: `rotate(${angle}deg) translateX(var(--r)) rotate(${-angle}deg)` }}>
                   <motion.span className="orbit__label" animate={{ rotate: ring ? 360 : -360 }} transition={{ duration: ring ? 90 : 60, repeat: Infinity, ease: "linear" }}>
-                    <i style={{ background: p.tint[1] }} />
+                    <Logo project={p} size={22} />
                     {p.name}
                   </motion.span>
                 </span>

@@ -51,7 +51,7 @@ export default function Contact() {
   return (
     <section id="contact" className="section contact">
       <header className="section__head">
-        <span className="section__index">05</span>
+        <span className="section__index">04</span>
         <h2>Contact</h2>
       </header>
 
