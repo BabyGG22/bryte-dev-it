@@ -1,10 +1,6 @@
 import type { Metadata, Viewport } from "next";
-import "@fontsource/unbounded/400.css";
-import "@fontsource/unbounded/600.css";
-import "@fontsource/unbounded/800.css";
-import "@fontsource-variable/manrope";
-import "@fontsource/space-mono/400.css";
-import "@fontsource/space-mono/700.css";
+import "@fontsource-variable/geist";
+import "@fontsource-variable/geist-mono";
 import "./globals.css";
 
 export const metadata: Metadata = {

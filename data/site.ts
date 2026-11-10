@@ -23,6 +23,8 @@ export type Project = {
   /** Logo in /public/logos, and the tile colour behind it */
   logo?: string;
   logoBg?: string;
+  /** "contain" for very wide screenshots */
+  shotFit?: "cover" | "contain";
 };
 
 export const owner = {
@@ -73,6 +75,8 @@ export const products: Project[] = [
   },
   {
     slug: "predarena",
+    shot: "/shots/predarena.jpg",
+    shotFit: "contain",
     logo: "/logos/predarena.png",
     logoBg: "#ffffff",
     name: "PredArena",
@@ -82,7 +86,7 @@ export const products: Project[] = [
     network: "Solana · Arc",
     url: "https://predarena.xyz",
     stack: ["React", "TypeScript", "Pyth", "Solana"],
-    tint: ["#150a2e", "#6a35e8"],
+    tint: ["#141c28", "#1c2a3a"],
   },
 ];
 

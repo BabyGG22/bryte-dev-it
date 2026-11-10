@@ -110,7 +110,7 @@ export default function Showcase() {
         <div className="mac__body">
           <div className="mac__screen">
             <div className="menubar">
-              <span className="menubar__logo">◆</span>
+              <span className="menubar__logo" />
               <strong>Bright Wallan</strong>
               <span className="menubar__item menubar__hide">{group === "products" ? "Products" : "Experiments"}</span>
               <span className="menubar__item">{p.name}</span>
@@ -146,7 +146,7 @@ export default function Showcase() {
                       </span>
                       {p.url ? (
                         <a className="urlbar" href={p.url} target="_blank" rel="noreferrer">
-                          <span className="urlbar__lock">🔒</span> {host(p.url)} <span className="urlbar__go">↗</span>
+                          <svg className="urlbar__lock" viewBox="0 0 24 24" aria-hidden><path fill="currentColor" d="M17 9h-1V7a4 4 0 1 0-8 0v2H7a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2Zm-7-2a2 2 0 1 1 4 0v2h-4V7Z"/></svg> {host(p.url)} <span className="urlbar__go">↗</span>
                         </a>
                       ) : (
                         <span className="urlbar urlbar--off">{p.repo ? "local build · not deployed" : "private build"}</span>
@@ -156,7 +156,7 @@ export default function Showcase() {
                     <div className="browser__view" style={{ background: `radial-gradient(120% 120% at 80% 0%, ${p.tint[1]}, ${p.tint[0]} 70%)` }}>
                       {p.shot ? (
                         // eslint-disable-next-line @next/next/no-img-element
-                        <img className="browser__shot" src={asset(p.shot)} alt={`${p.name} interface`} draggable={false} />
+                        <img className={`browser__shot ${p.shotFit === "contain" ? "is-contain" : ""}`} src={asset(p.shot)} alt={`${p.name} interface`} draggable={false} />
                       ) : (
                         <div className="browser__empty">
                           <Logo project={p} size={84} />
